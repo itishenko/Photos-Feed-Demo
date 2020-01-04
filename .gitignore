@@ -1,0 +1,8 @@
+UserInterfaceState.xcuserstate
+*/xcuserdata/*.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+xcuserdata
+*.DS_Store
+DerivedData
+.idea/
+Pods*
+*.xcworkspace

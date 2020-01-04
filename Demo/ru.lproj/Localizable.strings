@@ -1,0 +1,19 @@
+/* 
+  Localized.strings
+  Demo
+
+  Created by Ivan Tishchenko on 10.01.2020.
+  Copyright © 2020 All rights reserved.
+*/
+
+"Common.ok" = "ОК";
+"Common.back" = "Назад";
+"Common.retry" = "Повторить";
+
+"Photos.list" = "Список фото";
+"Photos.list.empty" = "Никаких фото пока нет";
+
+"Photos.details" = "Детали фото";
+
+"Error.internet" = "Проблемы с инернетом.";
+"Error.general" = "Что-то пошло не так.";
