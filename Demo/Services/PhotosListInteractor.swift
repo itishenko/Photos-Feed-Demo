@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import Alamofire
 
-protocol PhotosListInteractorProtocol {
+protocol PhotosListInteractorProtocol: AutoMockable {
     func getPhotos(page: Int, limit: Int) -> Single<[Photo]>
 }
 

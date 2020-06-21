@@ -12,7 +12,7 @@ import RxSwift
 protocol PhotosListModuleInput: AnyObject {
 }
 
-protocol PhotosListModuleOutput: AnyObject {
+protocol PhotosListModuleOutput: AnyObject, AutoMockable {
     func openDetails(for photo: Photo)
 }
 

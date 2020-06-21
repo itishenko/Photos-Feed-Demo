@@ -8,18 +8,23 @@
 
 @testable import Demo
 import XCTest
+import SwiftyMocky
 
 class PhotosListViewModelTest: BaseTestCase {
     
     func testConfigurationsWithEmptyList() throws {
+        let mockOutput = PhotosListModuleOutputMock()
+        let mockInteractor = PhotosListInteractorProtocolMock()
         let viewModel = PhotosListViewModel(
-            output: PhotosListModuleOutputStub(),
-            interactor: PhotosListInteractorStub(scheduler: scheduler)
+            output: mockOutput,
+            interactor: mockInteractor
         )
         let observer = scheduler.createObserver([SectionConfiguration].self)
         viewModel.configurations.subscribe(observer).disposed(by: disposeBag)
         
         scheduler.start()
+        
+        Verify(mockOutput, .never, .openDetails(for: .any))
         
         XCTAssertEqual(observer.events.count, 1)
         
@@ -30,13 +35,24 @@ class PhotosListViewModelTest: BaseTestCase {
     }
     
     func testConfigurationsWithPhoto() throws {
+        let mockOutput = PhotosListModuleOutputMock()
+        let mockInteractor = PhotosListInteractorProtocolMock()
         let viewModel = PhotosListViewModel(
-            output: PhotosListModuleOutputStub(),
-            interactor: PhotosListInteractorStub(
-                scheduler: scheduler,
-                photos: [FakeData.photo1]
-            )
+            output: mockOutput,
+            interactor: mockInteractor
         )
+        
+        let photo = Photo(
+            id: 1,
+            albumId: 1,
+            title: "1st photo",
+            url: URL(string: "https://via.placeholder.com/600/61a61")!,
+            thumbnailUrl: URL(string: "https://via.placeholder.com/150/61a61")!
+        )
+        
+        mockOutput.matcher.register(Photo.self) { $0.id == $1.id }
+        mockInteractor.given(.getPhotos(page: 0, limit: .value(PaginationState.Constants.pageSize), willReturn: scheduler.createColdSingle([photo])))
+        
         let observer = scheduler.createObserver([SectionConfiguration].self)
         viewModel.configurations.subscribe(observer).disposed(by: disposeBag)
         viewModel.refresh()
@@ -55,18 +71,37 @@ class PhotosListViewModelTest: BaseTestCase {
         XCTAssertEqual(section.rows.count, 1)
         
         let firstCell = try XCTUnwrap(section.rows.first as? PhotoCellConfiguration)
-        XCTAssertEqual(firstCell.title, FakeData.photos.first?.title)
+        XCTAssertEqual(firstCell.title, photo.title)
     }
     
     func testOpenDetailsWithTwoPhotos() throws {
-        let output = PhotosListModuleOutputStub()
+        let mockOutput = PhotosListModuleOutputMock()
+        let mockInteractor = PhotosListInteractorProtocolMock()
+        
         let viewModel = PhotosListViewModel(
-            output: output,
-            interactor: PhotosListInteractorStub(
-                scheduler: scheduler,
-                photos: FakeData.photos
-            )
+            output: mockOutput,
+            interactor: mockInteractor
         )
+        
+        let photos = [
+            Photo(
+                id: 1,
+                albumId: 1,
+                title: "1st photo",
+                url: URL(string: "https://via.placeholder.com/600/61a61")!,
+                thumbnailUrl: URL(string: "https://via.placeholder.com/150/61a61")!
+            ),
+            Photo(
+                id: 2,
+                albumId: 1,
+                title: "2nd photo",
+                url: URL(string: "https://via.placeholder.com/600/61a62")!,
+                thumbnailUrl: URL(string: "https://via.placeholder.com/150/61a62")!
+            )
+        ]
+        
+        mockOutput.matcher.register(Photo.self) { $0.id == $1.id }
+        mockInteractor.given(.getPhotos(page: 0, limit: .value(PaginationState.Constants.pageSize), willReturn: scheduler.createColdSingle(photos)))
         
         let observer = scheduler.createObserver([SectionConfiguration].self)
         viewModel.configurations.subscribe(observer).disposed(by: disposeBag)
@@ -80,12 +115,8 @@ class PhotosListViewModelTest: BaseTestCase {
         let section = try XCTUnwrap(sections.first)
         XCTAssertEqual(section.rows.count, 2)
         
-        output.onPhotoDetails = { clicked in
-            XCTAssertEqual(FakeData.photos.first?.id, clicked.id)
-        }
-        
         section.clickRow(with: 0)
         
-        XCTAssertEqual(output.openDetailsCount, 1)
+        Verify(mockOutput, 1, .openDetails(for: .value(photos.first!)))
     }
 }

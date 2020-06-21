@@ -43,10 +43,8 @@
 		261D3369245211840066AA5E /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D3368245211840066AA5E /* BaseTestCase.swift */; };
 		261D336B245212C20066AA5E /* TestScheduler+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D336A245212C20066AA5E /* TestScheduler+Extension.swift */; };
 		261D336D245212FF0066AA5E /* TestSchedulerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D336C245212FF0066AA5E /* TestSchedulerProvider.swift */; };
-		261D336F24521E3D0066AA5E /* PhotosListModuleOutputStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D336E24521E3D0066AA5E /* PhotosListModuleOutputStub.swift */; };
-		261D337124521F260066AA5E /* PhotosListInteractorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D337024521F260066AA5E /* PhotosListInteractorStub.swift */; };
 		261D3374245222E00066AA5E /* SectionConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D3373245222E00066AA5E /* SectionConfiguration+Extension.swift */; };
-		261D3376245226990066AA5E /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D3375245226990066AA5E /* FakeData.swift */; };
+		261EDDFE249D4BD20074193A /* Mock.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EDDFD249D4BD10074193A /* Mock.generated.swift */; };
 		26318F52244C83C6007E87BE /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26318F51244C83C5007E87BE /* Album.swift */; };
 		26318F55244C83E8007E87BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26318F54244C83E8007E87BE /* User.swift */; };
 		26B1A50B244CBB8B0095E585 /* PhotosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1A50A244CBB8B0095E585 /* PhotosListViewModel.swift */; };
@@ -123,10 +121,8 @@
 		261D3368245211840066AA5E /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		261D336A245212C20066AA5E /* TestScheduler+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestScheduler+Extension.swift"; sourceTree = "<group>"; };
 		261D336C245212FF0066AA5E /* TestSchedulerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSchedulerProvider.swift; sourceTree = "<group>"; };
-		261D336E24521E3D0066AA5E /* PhotosListModuleOutputStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListModuleOutputStub.swift; sourceTree = "<group>"; };
-		261D337024521F260066AA5E /* PhotosListInteractorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListInteractorStub.swift; sourceTree = "<group>"; };
 		261D3373245222E00066AA5E /* SectionConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionConfiguration+Extension.swift"; sourceTree = "<group>"; };
-		261D3375245226990066AA5E /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
+		261EDDFD249D4BD10074193A /* Mock.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.generated.swift; sourceTree = "<group>"; };
 		26318F51244C83C5007E87BE /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		26318F54244C83E8007E87BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		26B1A50A244CBB8B0095E585 /* PhotosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewModel.swift; sourceTree = "<group>"; };
@@ -285,6 +281,7 @@
 		260B296723C122A7003ACB59 /* DemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				261EDDFD249D4BD10074193A /* Mock.generated.swift */,
 				261D3365245211070066AA5E /* PhotosList */,
 				261D3364245210F50066AA5E /* Common */,
 				260B296A23C122A7003ACB59 /* Info.plist */,
@@ -328,7 +325,6 @@
 		261D3364245210F50066AA5E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				261D3375245226990066AA5E /* FakeData.swift */,
 				261D3368245211840066AA5E /* BaseTestCase.swift */,
 				261D336A245212C20066AA5E /* TestScheduler+Extension.swift */,
 				261D336C245212FF0066AA5E /* TestSchedulerProvider.swift */,
@@ -340,19 +336,9 @@
 		261D3365245211070066AA5E /* PhotosList */ = {
 			isa = PBXGroup;
 			children = (
-				261D337224521F2A0066AA5E /* Stubs */,
 				261D33662452115B0066AA5E /* PhotosListViewModelTest.swift */,
 			);
 			path = PhotosList;
-			sourceTree = "<group>";
-		};
-		261D337224521F2A0066AA5E /* Stubs */ = {
-			isa = PBXGroup;
-			children = (
-				261D336E24521E3D0066AA5E /* PhotosListModuleOutputStub.swift */,
-				261D337024521F260066AA5E /* PhotosListInteractorStub.swift */,
-			);
-			path = Stubs;
 			sourceTree = "<group>";
 		};
 		26318F4D244C8201007E87BE /* Modules */ = {
@@ -714,11 +700,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				261D336D245212FF0066AA5E /* TestSchedulerProvider.swift in Sources */,
-				261D3376245226990066AA5E /* FakeData.swift in Sources */,
 				261D3374245222E00066AA5E /* SectionConfiguration+Extension.swift in Sources */,
 				261D3369245211840066AA5E /* BaseTestCase.swift in Sources */,
-				261D336F24521E3D0066AA5E /* PhotosListModuleOutputStub.swift in Sources */,
-				261D337124521F260066AA5E /* PhotosListInteractorStub.swift in Sources */,
+				261EDDFE249D4BD20074193A /* Mock.generated.swift in Sources */,
 				261D33672452115B0066AA5E /* PhotosListViewModelTest.swift in Sources */,
 				261D336B245212C20066AA5E /* TestScheduler+Extension.swift in Sources */,
 			);
@@ -915,7 +899,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E54D6DE8014015C943E3B2D /* Pods-DemoTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -940,7 +923,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF79833F22B26ED6A167CCBA /* Pods-DemoTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

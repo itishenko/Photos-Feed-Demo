@@ -9,7 +9,6 @@ import Foundation
 
 struct Photo: Decodable {
     let id: Int
-
     let albumId: Int
     let title: String
     let url: URL

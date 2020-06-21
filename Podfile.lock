@@ -14,6 +14,11 @@ PODS:
   - RxSwift (4.5.0)
   - RxTest (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
+  - Sourcery (0.18.0)
+  - SwiftyMocky (3.5.0):
+    - SwiftyMocky/Core (= 3.5.0)
+  - SwiftyMocky/Core (3.5.0):
+    - Sourcery (>= 0.17)
   - Swinject (2.7.1)
 
 DEPENDENCIES:
@@ -23,6 +28,7 @@ DEPENDENCIES:
   - RealmSwift (= 4.3.2)
   - RxSwift (= 4.5.0)
   - RxTest (= 4.5.0)
+  - SwiftyMocky (= 3.5.0)
   - Swinject (= 2.7.1)
 
 SPEC REPOS:
@@ -35,6 +41,8 @@ SPEC REPOS:
     - RealmSwift
     - RxSwift
     - RxTest
+    - Sourcery
+    - SwiftyMocky
     - Swinject
 
 SPEC CHECKSUMS:
@@ -46,8 +54,10 @@ SPEC CHECKSUMS:
   RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   RxTest: 3ccb66bfbace0bf7df1c43a7c75d046f8ce60372
+  Sourcery: e0e8658a1ce6d9f475156ad3ffce4c68f1261b3e
+  SwiftyMocky: f277174040db328a9da04ce8efa81b6d6d5b9d7d
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: d71c2a403399e9b5ce6f5331b27b23ffa8965c28
+PODFILE CHECKSUM: 3e28c73076cbce70a17fc5a6e2d1575fbdd66516
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

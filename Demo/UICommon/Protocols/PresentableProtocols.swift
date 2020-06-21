@@ -19,3 +19,5 @@ public protocol ErrorPresentable {
 public protocol TableViewPresentable {
     var configurations: BehaviorSubject<[SectionConfiguration]> { get }
 }
+
+public protocol AutoMockable { }
